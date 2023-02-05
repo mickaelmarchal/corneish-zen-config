@@ -31,7 +31,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "COMMA_LOWERTHAN";
             #binding-cells = <0>;
-            bindings = <&kp M>, <&kp NUBS>;
+            bindings = <&kp M>, <&kp NUHS>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         /* . / > */
@@ -39,11 +39,11 @@
             compatible = "zmk,behavior-mod-morph";
             label = "DOT_GREATERTHAN";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp NUBS>;
+            bindings = <&kp LS(COMMA)>, <&kp NUHS>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        /* . / > */
+        /* ' / " */
         slqt_dbqt: singlequote_doublequote {
             compatible = "zmk,behavior-mod-morph";
             label = "SINGLEQUOTE_DOUBLEQUOTE";
