@@ -17,6 +17,45 @@
 };
 
 / {
+    behaviors {
+        /* backspace / delete */
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        /* , / < */
+        comma_lt: comma_lowerthan {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_LOWERTHAN";
+            #binding-cells = <0>;
+            bindings = <&kp M>, <&kp NUBS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        /* . / > */
+        dot_gt: dot_greaterthan {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_GREATERTHAN";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp NUBS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        /* . / > */
+        slqt_dbqt: singlequote_doublequote {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SINGLEQUOTE_DOUBLEQUOTE";
+            #binding-cells = <0>;
+            bindings = <&kp N4>, <&kp N3>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+};
+
+
+/ {
         keymap {
                 compatible = "zmk,keymap";
 
@@ -30,8 +69,8 @@
 //
 //
 // | XXX  |  B  |  P  |  O  |  F  |  W  |   |  J  |  Q   |  L  |  Y  | BKSP | XXX |
-// | XXX  |  A  |  U  |  I  |  E  |  D  |   |  G  |  T   |  S  |  R  |  N  | XXX |
-// | XXX  |  Z  |  X  |  C  |  V  |  K  |   |  H  |  M   |  ,  |  .  |  /  | XXX |
+// | XXX  |  A  |  U  |  I  |  E  |  D  |   |  G  |  T   |  S  |  R  |  N   | XXX |
+// | XXX  |  Z  |  X  |  C  |  V  |  K  |   |  H  |  M   |  ,< |  .> |  '"  | XXX |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
                         bindings = <
@@ -42,18 +81,18 @@
                         &kp P
                         &kp O
                         &kp F
-                        &kp Z /* 'W' in AZERTY */
+                        &kp Z /* W in AZERTY */
 
                         &kp J
-                        &kp A /* 'Q' in AZERTY */
+                        &kp A /* Q in AZERTY */
                         &kp L
                         &kp Y
-                        &kp BSPC
+                        &bspc_del /* backspace / delete */
                         &none
 
                         /* row 2 */
                         &none
-                        &kp Q /* 'A' in AZERTY */
+                        &kp Q /* A in AZERTY */
                         &kp U
                         &kp I
                         &kp E
@@ -68,17 +107,17 @@
 
                         /* row 3 */
                         &none
-                        &kp W /* 'Z' in AZERTY */
+                        &kp W /* Z in AZERTY */
                         &kp X
                         &kp C
                         &kp V
                         &kp K
 
                         &kp H
-                        &kp SEMI /* 'M' in AZERTY */
-                        &kp COMMA /* TODO */
-                        &kp DOT /* TODO */
-                        &kp FSLH /* TODO */
+                        &kp SEMI /* M in AZERTY */
+                        &comma_lt /* , in AZERTY, TODO < */
+                        &dot_gt /* . in AZERTY, TODO > */
+                        &slqt_dbqt /* ' in AZERTY */
                         &none
 
                         /* thumb cluster */
